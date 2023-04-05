@@ -22,10 +22,7 @@ router.post("/", (req, res) => {
 
     // render back to the index page
     res.render("index", {
-        partName: partname,
-        partType: productValue,
-        quantity,
-        price,
+        ...responseObj,
     });
 });
 
