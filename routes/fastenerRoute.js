@@ -34,7 +34,15 @@ router.post("/", (req, res) => {
 
     // send the object to the sqlite3 database via Sequelize ORM
     db.Parts.create(responseObj);
-    res.json(responseObj);
+    // res.json(responseObj);
+    
+    // render back to the index page
+    res.render("index", {
+        partName: partname,
+        partType: productValue,
+        quantity,
+        price,
+    });
 });
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
