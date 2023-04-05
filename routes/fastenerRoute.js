@@ -3,10 +3,13 @@ const router = express.Router();
 const db = require("../models/fastenerModel");
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
 router.get("/", (req, res) => {
     res.render("index");
 });
+
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
 router.post("/", (req, res) => {
     const { partname, quantity, price, ...product } = req.body;
     const productType = Object.keys(product)[0];
@@ -30,6 +33,5 @@ router.post("/", (req, res) => {
         price,
     });
 });
-// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 module.exports = router;
