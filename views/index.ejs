@@ -10,40 +10,42 @@
             <form id="myform" action="/" method="POST">
                 <fieldset id="partname">
                     <legend>Category</legend>
-                    <input type="radio" name="partname" value="screws" />Screws<br />
+                    <input type="radio" name="partname" value="screws" required />Screws<br />
                     <input type="radio" name="partname" value="nuts" />Nuts<br />
                     <input type="radio" name="partname" value="bolts" />Bolts<br />
                     <input type="radio" name="partname" value="washers" />Washers<br />
                 </fieldset>
 
                 <fieldset id="screwtype">
-                    <legend>Type of Screw</legend>
+                    <legend>Screw Type</legend>
                     <input type="radio" name="screwtype" value="wood" />Wood<br />
-                    <input type="radio" name="screwtype" value="machine" />Machine<br />
                     <input type="radio" name="screwtype" value="sheetmetal" />Sheet Metal<br />
-                    <input type="radio" name="screwtype" value="socket" />Socket<br />
-                    <input type="radio" name="screwtype" value="roofing" />Roofing<br />
+                    <input type="radio" name="screwtype" value="machine" />Machine<br />
+                    <input type="radio" name="screwtype" value="drywall" />Drywall<br />
                 </fieldset>
 
                 <fieldset id="nuttype">
-                    <legend>Type of Nut</legend>
-                    <input type="radio" name="nuttype" value="" />Hex<br />
-                    <input type="radio" name="nuttype" value="" />Lock<br />
-                    <input type="radio" name="nuttype" value="" />Washer<br />
+                    <legend>Nut Type</legend>
+                    <input type="radio" name="nuttype" value="hex" />Hex<br />
+                    <input type="radio" name="nuttype" value="lock" />Lock<br />
+                    <input type="radio" name="nuttype" value="flange" />Flange<br />
+                    <input type="radio" name="nuttype" value="wing" />Wing<br />
                 </fieldset>
 
                 <fieldset id="bolttype">
-                    <legend>Type of Bolt</legend>
+                    <legend>Bolt Type</legend>
                     <input type="radio" name="bolttype" value="hex" />Hex<br />
-                    <input type="radio" name="bolttype" value="flange" />Flange<br />
+                    <input type="radio" name="bolttype" value="square" />Square<br />
+                    <input type="radio" name="bolttype" value="carriage" />Carriage<br />
                     <input type="radio" name="bolttype" value="eye" />Eye<br />
                 </fieldset>
 
-                <fieldset id="washer">
-                    <legend>Type of Washer</legend>
-                    <input type="radio" name="washer" value="flat" />Flat<br />
-                    <input type="radio" name="washer" value="lock" />Lock<br />
-                    <input type="radio" name="washer" value="washer" />Washer<br />
+                <fieldset id="washertype">
+                    <legend>Washer Type</legend>
+                    <input type="radio" name="washertype" value="plain" />Plain<br />
+                    <input type="radio" name="washertype" value="lock" />Lock<br />
+                    <input type="radio" name="washertype" value="tooth" />Tooth<br />
+                    <input type="radio" name="washertype" value="spring" />Spring<br />
                 </fieldset>
 
                 <fieldset>
@@ -59,6 +61,45 @@
                 <input type="submit" value="Submit" />
             </form>
         </div>
+
+        <!-- If screws are chosen for category  make sure only `screwtype` radio group is enabled 
+                If nuts are chosen for category  make sure only `nuttype` radio group is enabled
+                If bolts are chosen for category  make sure only `bolttype` radio group is enabled
+                If washers are chosen for category  make sure only `washertype` radio group is enabled
+                -->
+
+        <script>
+            var partname = document.getElementById("partname");
+            var screwtype = document.getElementById("screwtype");
+            var nuttype = document.getElementById("nuttype");
+            var bolttype = document.getElementById("bolttype");
+            var washertype = document.getElementById("washertype");
+
+            partname.addEventListener("change", function () {
+                if (document.querySelector('input[name="partname"]:checked').value == "screws") {
+                    screwtype.disabled = false;
+                    nuttype.disabled = true;
+                    bolttype.disabled = true;
+                    washertype.disabled = true;
+                } else if (document.querySelector('input[name="partname"]:checked').value == "nuts") {
+                    screwtype.disabled = true;
+                    nuttype.disabled = false;
+                    bolttype.disabled = true;
+                    washertype.disabled = true;
+                } else if (document.querySelector('input[name="partname"]:checked').value == "bolts") {
+                    screwtype.disabled = true;
+                    nuttype.disabled = true;
+                    bolttype.disabled = false;
+                    washertype.disabled = true;
+                } else if (document.querySelector('input[name="partname"]:checked').value == "washers") {
+                    screwtype.disabled = true;
+                    nuttype.disabled = true;
+                    bolttype.disabled = true;
+                    washertype.disabled = false;
+                }
+            });
+        </script>
+
         <% if (typeof partName !=="undefined" ) { %>
         <div id="results">
             <h2>Results</h2>
