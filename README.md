@@ -1,12 +1,12 @@
 ## RESTful API Inventory App for Fasteners
 
-A Node/Express web app that uses the Sequelize ORM to interact with a SQLite3 database. Front-end is built with HTML, CSS and JavaScript.
+A Node/Express web app that uses the Sequelize ORM to interact with a SQLite3 database. Front-end is built HTML and EJS.
 
 ### Description
 
-This is a work-in-progress project to create a RESTful API for a basic inventory management application for fasteners. The app is built with Node.js, Express, and Sequelize. The database is SQLite3.<br>
+A "work-in-progress" project to create a RESTful API for a basic inventory management application for fasteners. The app is built with Node.js, Express, EJS template engine and Sequelize ORM. The database is SQLite3.<br>
 
-A demo app will be deployed on my Linode VPS at: []()
+A demo app will be deployed on: []()
 
 ---
 
