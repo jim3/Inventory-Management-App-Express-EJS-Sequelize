@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fastener Inventory App</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1 style="text-align: center">Fastener Inventory, now with EJS! 😅</h1>
+            <form id="myform" action="/" method="POST">
+                <fieldset id="partname">
+                    <legend>Category</legend>
+                    <input type="radio" name="partname" value="screws" />Screws<br />
+                    <input type="radio" name="partname" value="nuts" />Nuts<br />
+                    <input type="radio" name="partname" value="bolts" />Bolts<br />
+                    <input type="radio" name="partname" value="washers" />Washers<br />
+                </fieldset>
+
+                <fieldset id="screwtype">
+                    <legend>Type of Screw</legend>
+                    <input type="radio" name="screwtype" value="wood" />Wood<br />
+                    <input type="radio" name="screwtype" value="machine" />Machine<br />
+                    <input type="radio" name="screwtype" value="sheetmetal" />Sheet Metal<br />
+                    <input type="radio" name="screwtype" value="socket" />Socket<br />
+                    <input type="radio" name="screwtype" value="roofing" />Roofing<br />
+                </fieldset>
+
+                <fieldset id="nuttype">
+                    <legend>Type of Nut</legend>
+                    <input type="radio" name="nuttype" value="" />Hex<br />
+                    <input type="radio" name="nuttype" value="" />Lock<br />
+                    <input type="radio" name="nuttype" value="" />Washer<br />
+                </fieldset>
+
+                <fieldset id="bolttype">
+                    <legend>Type of Bolt</legend>
+                    <input type="radio" name="bolttype" value="hex" />Hex<br />
+                    <input type="radio" name="bolttype" value="flange" />Flange<br />
+                    <input type="radio" name="bolttype" value="eye" />Eye<br />
+                </fieldset>
+
+                <fieldset id="washer">
+                    <legend>Type of Washer</legend>
+                    <input type="radio" name="washer" value="flat" />Flat<br />
+                    <input type="radio" name="washer" value="lock" />Lock<br />
+                    <input type="radio" name="washer" value="washer" />Washer<br />
+                </fieldset>
+
+                <fieldset>
+                    <legend>Quantity</legend>
+                    <input type="number" id="quantity" name="quantity" min="1" max="1000" />
+                </fieldset>
+
+                <fieldset>
+                    <legend>Price</legend>
+                    <input type="number" id="price" name="price" min="0.01" max="1000" step="0.01" />
+                </fieldset>
+
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+
+        <div id="results">
+            <h2>Results</h2>
+        </div>
+    </body>
+</html>
