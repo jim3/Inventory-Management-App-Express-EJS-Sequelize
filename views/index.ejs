@@ -6,7 +6,7 @@
     </head>
     <body>
         <div class="container">
-            <h1 style="text-align: center">Fastener Inventory, now with EJS! 😅</h1>
+            <h1 style="text-align: center">Fastener Inventory</h1>
             <form id="myform" action="/" method="POST">
                 <fieldset id="partname">
                     <legend>Category</legend>
@@ -59,9 +59,14 @@
                 <input type="submit" value="Submit" />
             </form>
         </div>
-
+        <% if (typeof partName !=="undefined" ) { %>
         <div id="results">
             <h2>Results</h2>
+            <p>Part Name: <%= partName %></p>
+            <p>Part Type: <%= partType %></p>
+            <p>Quantity: <%= quantity %></p>
+            <p>Price: <%= price %></p>
         </div>
+        <% } %>
     </body>
 </html>
