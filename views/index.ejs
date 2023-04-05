@@ -16,6 +16,8 @@
                     <input type="radio" name="partname" value="washers" />Washers<br />
                 </fieldset>
 
+                <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+
                 <fieldset id="screwtype">
                     <legend>Screw Type</legend>
                     <input type="radio" name="screwtype" value="wood" />Wood<br />
@@ -48,6 +50,8 @@
                     <input type="radio" name="washertype" value="spring" />Spring<br />
                 </fieldset>
 
+                <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+
                 <fieldset>
                     <legend>Quantity</legend>
                     <input type="number" id="quantity" name="quantity" min="1" max="1000" />
@@ -60,47 +64,16 @@
 
                 <input type="submit" value="Submit" />
             </form>
-        </div>
-        <script>
-            var partname = document.getElementById("partname");
-            var screwtype = document.getElementById("screwtype");
-            var nuttype = document.getElementById("nuttype");
-            var bolttype = document.getElementById("bolttype");
-            var washertype = document.getElementById("washertype");
 
-            partname.addEventListener("change", function () {
-                if (document.querySelector('input[name="partname"]:checked').value == "screws") {
-                    screwtype.disabled = false;
-                    nuttype.disabled = true;
-                    bolttype.disabled = true;
-                    washertype.disabled = true;
-                } else if (document.querySelector('input[name="partname"]:checked').value == "nuts") {
-                    screwtype.disabled = true;
-                    nuttype.disabled = false;
-                    bolttype.disabled = true;
-                    washertype.disabled = true;
-                } else if (document.querySelector('input[name="partname"]:checked').value == "bolts") {
-                    screwtype.disabled = true;
-                    nuttype.disabled = true;
-                    bolttype.disabled = false;
-                    washertype.disabled = true;
-                } else if (document.querySelector('input[name="partname"]:checked').value == "washers") {
-                    screwtype.disabled = true;
-                    nuttype.disabled = true;
-                    bolttype.disabled = true;
-                    washertype.disabled = false;
-                }
-            });
-        </script>
-
-        <% if (typeof partName !=="undefined" ) { %>
-        <div id="results">
-            <h2>Results</h2>
+            <% if (typeof partName !=="undefined" ) { %>
+            <h2>Order Results:</h2>
             <p>Part Name: <%= partName %></p>
             <p>Part Type: <%= partType %></p>
             <p>Quantity: <%= quantity %></p>
             <p>Price: <%= price %></p>
+            <% } %>
         </div>
-        <% } %>
+
+        <script src="../javascript/main.js"></script>
     </body>
 </html>
