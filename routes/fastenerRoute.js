@@ -30,13 +30,3 @@ router.post("/", (req, res) => {
 
 module.exports = router;
 
-/* 
-
-{
-    partname: 'bolts',     
-    bolttype: 'square',    
-    quantity: '65',        
-    price: '0.13'
-  }
-
- */
