@@ -9,7 +9,6 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    console.log("request body log ----> ", req.body);
     const { partname, quantity, price, ...product } = req.body;
     const productType = Object.keys(product)[0];
     const productValue = product[productType];
