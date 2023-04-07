@@ -9,16 +9,15 @@ A "work-in-progress" project to create a RESTful API for a basic inventory manag
 A crude demo app is deployed on my VPS at: [Parts Inventory App](https://jimmy3.xyz)
 
 ---
-
 ### API Endpoints
 
-| Method | Endpoint   | Description   |
-| ------ | ---------- | ------------- |
-| GET    | /parts     | Get all parts |
-| GET    | /parts/:id | Get one part  |
-| POST   | /parts     | Add a part    |
-| PUT    | /parts/:id | Update a part |
-| DELETE | /parts/:id | Delete a part |
+| Method | Endpoint   | Description    |
+| ------ | ---------- | -------------- |
+| GET    | /parts     | Read all parts |
+| GET    | /parts/:id | Read one part  |
+| POST   | /parts     | Create a part  |
+| PUT    | /parts/:id | Update a part  |
+| DELETE | /parts/:id | Delete a part  |
 
 ---
 
