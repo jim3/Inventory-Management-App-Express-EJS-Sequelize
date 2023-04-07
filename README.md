@@ -12,13 +12,13 @@ A crude demo app is deployed on my VPS at: [Parts Inventory App](https://jimmy3.
 
 ### API Endpoints
 
-| Method | Endpoint | Description   |
-| ------ | -------- | ------------- |
-| GET    | /        | Get all parts |
-| GET    | /:id     | Get one part  |
-| POST   | /        | Add a part    |
-| PUT    | /:id     | Update a part |
-| DELETE | /:id     | Delete a part |
+| Method | Endpoint   | Description   |
+| ------ | ---------- | ------------- |
+| GET    | /parts     | Get all parts |
+| GET    | /parts/:id | Get one part  |
+| POST   | /parts     | Add a part    |
+| PUT    | /parts/:id | Update a part |
+| DELETE | /parts/:id | Delete a part |
 
 ---
 
