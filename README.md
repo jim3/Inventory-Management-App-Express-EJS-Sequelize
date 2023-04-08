@@ -85,7 +85,7 @@ A RESTful API for a inventory management application for parts (fasteners).
 
 -   Search for parts by part type, part name, quantity and price
 -   Sort parts by part type, part name, quantity and price
--   Pagination
+-   Create a a user account
 -   Authentication
 -   Authorization
 
