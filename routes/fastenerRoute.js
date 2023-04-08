@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
 
-// gat all parts
+// gat all parts from inventory
 router.get("/parts", async (req, res) => {
     try {
         const parts = await db.Parts.findAll();
@@ -24,15 +24,15 @@ router.get("/parts", async (req, res) => {
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
 
-// get a part by id
+// get a part by id from inventory
 router.get("/parts/:id", async (req, res) => {
-    const part = await db.Parts.findByPk(req.params.id); // finds the part by id
-
-    if (!part) {
-        return res.status(404).json({ error: "Part not found" });
+    try {
+        const part = await db.Parts.findByPk(req.params.id);
+        res.json(part);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Server error" });
     }
-
-    res.json(part);
 });
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
@@ -64,7 +64,8 @@ router.post("/parts", async (req, res) => {
 });
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
-// Update part
+
+// update a part in inventory
 router.put("/parts/:id", async (req, res) => {
     try {
         const { partname, quantity, price, ...product } = req.body;
