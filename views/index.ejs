@@ -7,7 +7,7 @@
     <body>
         <div class="container">
             <h1 style="text-align: center">Fastener Inventory</h1>
-            <form id="myform" action="/" method="POST">
+            <form id="myform" action="/parts" method="POST">
                 <fieldset id="partname">
                     <legend>Category</legend>
                     <input type="radio" name="partname" value="screws" required />Screws<br />
@@ -15,8 +15,6 @@
                     <input type="radio" name="partname" value="bolts" />Bolts<br />
                     <input type="radio" name="partname" value="washers" />Washers<br />
                 </fieldset>
-
-                <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 
                 <fieldset id="screwtype">
                     <legend>Screw Type</legend>
@@ -50,8 +48,6 @@
                     <input type="radio" name="washertype" value="spring" />Spring<br />
                 </fieldset>
 
-                <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-
                 <fieldset>
                     <legend>Quantity</legend>
                     <input type="number" id="quantity" name="quantity" min="1" max="1000" />
@@ -61,7 +57,6 @@
                     <legend>Price</legend>
                     <input type="number" id="price" name="price" min="0.01" max="1000" step="0.01" />
                 </fieldset>
-
                 <input type="submit" value="Submit" />
             </form>
 
