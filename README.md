@@ -43,7 +43,7 @@ A RESTful API for a inventory management application for parts (fasteners).
 
 #### Example of API call
 
-localhost/api/parts
+`${localhost}/api/parts`
 
 #### Example of API response
 
