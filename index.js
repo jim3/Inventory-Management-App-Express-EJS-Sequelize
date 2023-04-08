@@ -16,14 +16,14 @@ app.use(express.static(__dirname + "/public"));
 // routes
 app.use("/", require("./routes/fastenerRoute"));
 
-// Sync the database
+// sync the database
 const db = require("./models/fastenerModel");
 const { Model } = require("sequelize");
 db.sequelize.sync().then(() => {
     console.log("Synced db.");
 });
 
-// Start the server
+// start the server
 const port = 3000;
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
