@@ -4,9 +4,10 @@ A Node/Express web app that uses the Sequelize ORM to interact with a SQLite3 da
 
 ### Description
 
-A "work-in-progress" project to create a RESTful API for a basic inventory management application for fasteners. The app is built with Node.js, Express, EJS template engine and Sequelize ORM. The database is SQLite3.<br>
+A "work-in-progress" RESTful API for a parts inventory management application for fasteners. The app is built with Node.js, Express, EJS template engine and Sequelize ORM. The database is SQLite3.
 
 ---
+
 ### API Endpoints
 
 | Method | Endpoint   | Description    |
@@ -21,11 +22,47 @@ A "work-in-progress" project to create a RESTful API for a basic inventory manag
 
 #### Installation
 
--   Install Node.js
--   Create your database (e.g. SQLite3, MySQL, Postgres, etc.)
 -   Clone the repo
 -   Run `npm install`
 -   Run `node index.js`
 -   Navigate to `localhost:3000`
 
 ---
+
+#### Example of API call
+
+http://localhost:3000/api/parts
+
+#### Example of API response
+
+```json
+[
+    {
+        "id": 1,
+        "partType": "hex",
+        "partName": "nuts",
+        "quantity": 100,
+        "price": 0.08,
+        "createdAt": "2023-04-07T20:16:13.575Z",
+        "updatedAt": "2023-04-07T20:16:13.575Z"
+    },
+    {
+        "id": 2,
+        "partType": "lock",
+        "partName": "washers",
+        "quantity": 50,
+        "price": 0.12,
+        "createdAt": "2023-04-07T20:37:26.849Z",
+        "updatedAt": "2023-04-07T20:37:26.849Z"
+    },
+    {
+        "id": 3,
+        "partType": "wood",
+        "partName": "screws",
+        "quantity": 60,
+        "price": 0.25,
+        "createdAt": "2023-04-07T20:37:51.159Z",
+        "updatedAt": "2023-04-08T02:15:27.530Z"
+    }
+]
+```
