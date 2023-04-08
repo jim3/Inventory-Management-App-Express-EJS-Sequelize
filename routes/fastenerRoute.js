@@ -2,12 +2,16 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models/fastenerModel");
 
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+
+// render forms page
 router.get("/", (req, res) => {
     res.render("index");
 });
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
 
+// gat all parts
 router.get("/parts", async (req, res) => {
     try {
         const parts = await db.Parts.findAll();
@@ -20,15 +24,19 @@ router.get("/parts", async (req, res) => {
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
 
+// get a part by id
 router.get("/parts/:id", async (req, res) => {
-    const part = await db.Parts.findByPk(req.params.id);
+    const part = await db.Parts.findByPk(req.params.id); // finds the part by id
+
     if (!part) {
         return res.status(404).json({ error: "Part not found" });
     }
+
     res.json(part);
 });
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+
 // Create a part in inventory
 router.post("/parts", async (req, res) => {
     try {
@@ -43,11 +51,40 @@ router.post("/parts", async (req, res) => {
             price,
         };
 
-        let result = await db.Parts.create(responseObj);
+        // wait for the operation to complete before rendering the template
+        await db.Parts.create(responseObj);
 
         res.render("index", {
             ...responseObj,
         });
+    } catch (err) {
+        console.error();
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+// Update part
+router.put("/parts/:id", async (req, res) => {
+    try {
+        const { partname, quantity, price, ...product } = req.body;
+        const productType = Object.keys(product)[0];
+        const productValue = product[productType];
+
+        const responseObj = {
+            partName: partname,
+            partType: productValue,
+            quantity,
+            price,
+        };
+
+        // get part to update
+        const part = await db.Parts.findByPk(req.params.id);
+
+        // update part
+        await part.update(responseObj);
+
+        res.json(responseObj);
     } catch (err) {
         console.error();
         res.status(500).send("Internal Server Error");
