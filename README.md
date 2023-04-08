@@ -14,7 +14,6 @@ A RESTful API for a inventory management application for parts (fasteners).
 
 -   Node.js
 -   Express
--   EJS
 -   Sequelize ORM
 -   SQLite3
 
