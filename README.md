@@ -43,7 +43,7 @@ A RESTful API for a inventory management application for parts (fasteners).
 
 #### Example of API call
 
-http://localhost:3000/api/parts
+127.0.0.1:3000/api/parts
 
 #### Example of API response
 
