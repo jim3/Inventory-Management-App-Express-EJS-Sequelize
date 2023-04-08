@@ -1,6 +1,6 @@
 ## RESTful API Inventory App for Fasteners
 
-A Node/Express web app that uses the Sequelize ORM to interact with a SQLite3 database. Front-end is built HTML and EJS.
+A Node/Express web app that uses the Sequelize ORM to interact with a SQLite3 database. Front-end is built with HTML, CSS, JavaScript & EJS.
 
 ### Description
 
