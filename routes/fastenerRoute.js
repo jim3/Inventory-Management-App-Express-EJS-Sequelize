@@ -94,4 +94,31 @@ router.put("/parts/:id", async (req, res) => {
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
 
+// delete part
+router.delete("/parts/:id", async (req, res) => {
+    try {
+        const { partname, quantity, price, ...product } = req.body;
+        const productType = Object.keys(product)[0];
+        const productValue = product[productType];
+        const responseObj = {
+            partName: partname,
+            partType: productValue,
+            quantity,
+            price,
+        };
+
+        // get part to update
+        const part = await db.Parts.findByPk(req.params.id);
+
+        // delete part
+        await part.destroy(responseObj);
+        res.json(responseObj);
+    } catch (err) {
+        console.error();
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+
 module.exports = router;
