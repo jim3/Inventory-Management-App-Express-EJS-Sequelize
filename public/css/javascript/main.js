@@ -1,4 +1,3 @@
-// You need to leave out the "public" part of the path when you reference it in your HTML file!
 var partname = document.getElementById("partname");
 var screwtype = document.getElementById("screwtype");
 var nuttype = document.getElementById("nuttype");
