@@ -4,7 +4,19 @@ A Node/Express web app that uses the Sequelize ORM to interact with a SQLite3 da
 
 ### Description
 
-A "work-in-progress" RESTful API for a parts inventory management application for fasteners. The app is built with Node.js, Express, EJS template engine and Sequelize ORM. The database is SQLite3.
+A RESTful API for a inventory management application for parts (fasteners).
+
+### Features
+
+-   Create, Read, Update and Delete parts (CRUD)
+
+### Tech Stack
+
+-   Node.js
+-   Express
+-   EJS
+-   Sequelize ORM
+-   SQLite3
 
 ---
 
@@ -66,3 +78,15 @@ http://localhost:3000/api/parts
     }
 ]
 ```
+
+---
+
+#### Things planned to implement
+
+-   Search for parts by part type, part name, quantity and price
+-   Sort parts by part type, part name, quantity and price
+-   Pagination
+-   Authentication
+-   Authorization
+
+---
