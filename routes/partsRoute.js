@@ -1,16 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../models/fastenerModel");
+const db = require("../models/Parts");
+const accountsDB = require("../models/Accounts");
 
-// render forms page
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+// PART ROUTES
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+
 router.get("/", (req, res) => {
     res.render("index");
 });
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
 
-// gat all parts from inventory
-router.get("/parts", async (req, res) => {
+// get all parts
+router.get("/api/parts", async (req, res) => {
     try {
         const parts = await db.Parts.findAll();
         res.json(parts);
@@ -22,8 +26,8 @@ router.get("/parts", async (req, res) => {
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
 
-// get a part by id from inventory
-router.get("/parts/:id", async (req, res) => {
+// get part by id
+router.get("/api/parts/:id", async (req, res) => {
     try {
         const part = await db.Parts.findByPk(req.params.id);
         res.json(part);
@@ -35,8 +39,8 @@ router.get("/parts/:id", async (req, res) => {
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
 
-// Create a part in inventory
-router.post("/parts", async (req, res) => {
+// create new part
+router.post("/api/parts", async (req, res) => {
     try {
         const { partname, quantity, price, ...product } = req.body;
         const productType = Object.keys(product)[0];
@@ -49,7 +53,7 @@ router.post("/parts", async (req, res) => {
             price,
         };
 
-        // wait for the operation to complete before rendering the template
+        // await for the operation to complete before rendering the template
         await db.Parts.create(responseObj);
 
         res.render("index", {
@@ -63,8 +67,8 @@ router.post("/parts", async (req, res) => {
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
 
-// update a part in inventory
-router.put("/parts/:id", async (req, res) => {
+// update part
+router.put("/api/parts/:id", async (req, res) => {
     try {
         const { partname, quantity, price, ...product } = req.body;
         const productType = Object.keys(product)[0];
@@ -80,7 +84,7 @@ router.put("/parts/:id", async (req, res) => {
         // get part to update
         const part = await db.Parts.findByPk(req.params.id);
 
-        // update part
+        // update the part
         await part.update(responseObj);
 
         res.json(responseObj);
@@ -93,7 +97,7 @@ router.put("/parts/:id", async (req, res) => {
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
 
 // delete part
-router.delete("/parts/:id", async (req, res) => {
+router.delete("/api/parts/:id", async (req, res) => {
     try {
         const { partname, quantity, price, ...product } = req.body;
         const productType = Object.keys(product)[0];
@@ -105,7 +109,7 @@ router.delete("/parts/:id", async (req, res) => {
             price,
         };
 
-        // get part to update
+        // await for update
         const part = await db.Parts.findByPk(req.params.id);
 
         // delete part
@@ -114,6 +118,40 @@ router.delete("/parts/:id", async (req, res) => {
     } catch (err) {
         console.error();
         res.status(500).send("Internal Server Error");
+    }
+});
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+// ACCOUNT ROUTES
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= //
+
+// create a new account
+router.post("/api/accounts", async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        console.log("--------> ", email, password);
+        const responseObj = {
+            email,
+            password,
+        };
+
+        await accountsDB.Accounts.create(responseObj);
+
+        res.json(responseObj);
+    } catch (err) {
+        console.error();
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+// get all accounts
+router.get("/api/accounts", async (req, res) => {
+    try {
+        const accounts = await accountsDB.Accounts.findAll();
+        res.json(accounts);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Server error" });
     }
 });
 
